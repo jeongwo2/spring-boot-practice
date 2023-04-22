@@ -7,6 +7,17 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 
+/**
+ * Package Name   : com.example.springbootpractice.service
+ * File Name      : StudentService
+ * Author         : jeong
+ * Date           : 2023-04-11
+ * Description    :
+ * ===========================================================
+ * DATE              AUTHOR             NOTE
+ * -----------------------------------------------------------
+ * 2023-04-11        jeong       최초 생성
+ */
 @RequiredArgsConstructor
 @Service
 public class StudentService {

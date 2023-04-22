@@ -9,7 +9,17 @@ import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
-
+/**
+ * Package Name   : com.example.springbootpractice.config
+ * File Name      : StudentRepository
+ * Author         : jeong
+ * Date           : 2023-04-11
+ * Description    :
+ * ===========================================================
+ * DATE              AUTHOR             NOTE
+ * -----------------------------------------------------------
+ * 2023-04-11        jeong       최초 생성
+ */
 @AotProxyHint(targetClass= StudentRepository.class, proxyFeatures = ProxyBits.IS_STATIC)
 @RequiredArgsConstructor
 @Component

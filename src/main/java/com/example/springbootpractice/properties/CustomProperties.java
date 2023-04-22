@@ -9,10 +9,20 @@ import org.springframework.boot.convert.DurationUnit;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 
+/**
+ * Package Name   : com.example.springbootpractice.properties
+ * File Name      : CustomProperties
+ * Author         : jeong
+ * Date           : 2023-04-11
+ * Description    :
+ * ===========================================================
+ * DATE              AUTHOR             NOTE
+ * -----------------------------------------------------------
+ * 2023-04-11        jeong       최초 생성
+ */
 @ConstructorBinding
 @ConfigurationProperties("iam")
 public class CustomProperties {
-
     /**
      * 와아 이건 configuration processor 테스트
      */

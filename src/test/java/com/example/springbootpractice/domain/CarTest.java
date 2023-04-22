@@ -7,7 +7,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
-
     @Test
     void test() {
         Car car = Car.of("My Car");

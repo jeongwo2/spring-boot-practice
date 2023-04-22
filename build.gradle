@@ -6,9 +6,9 @@ plugins {
     id 'org.graalvm.buildtools.native' version '0.9.1'
 }
 
-group = 'com.fastcampus'
+group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '16'
+sourceCompatibility = '11'
 
 repositories {
     maven { url 'https://repo.spring.io/release' }
@@ -21,20 +21,27 @@ ext {
 }
 
 dependencies {
-    implementation 'org.springframework.cloud:spring-cloud-starter-config'
-//    implementation 'org.springframework.cloud:spring-cloud-config-server'
-//    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-//    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+//  implementation 'org.springframework.boot:spring-boot-starter-cache'
+    implementation 'org.springframework.cloud:spring-cloud-config-server'
+    // vault
 //    implementation 'org.springframework.cloud:spring-cloud-starter-vault-config'
+//    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+//
+    runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation "org.testcontainers:vault:${testcontainersVersion}"
+    // testcontainers
     testImplementation 'org.testcontainers:junit-jupiter'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 }
 
+// vault
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"

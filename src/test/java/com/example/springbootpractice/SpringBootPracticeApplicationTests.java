@@ -21,12 +21,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Testcontainers
 @SpringBootTest
 class SpringBootPracticeApplicationTests {
-
     private static final Logger logger = LoggerFactory.getLogger(SpringBootPracticeApplicationTests.class);
-
+    // https://hub.docker.com/search?q=redis
     @Container
-    private static final GenericContainer<?> redisContainer = new GenericContainer<>(DockerImageName.parse("redis:latest"));
-
+    private static final GenericContainer<?> redisContainer
+            = new GenericContainer<>(DockerImageName.parse("redis:latest"));
     @Autowired
     private ObjectMapper mapper;
 
@@ -34,7 +33,7 @@ class SpringBootPracticeApplicationTests {
     static void setup() {
         redisContainer.followOutput(new Slf4jLogConsumer(logger));
     }
-
+    // Property 를 나중에 읽어서 주입
     @DynamicPropertySource
     static void properties(DynamicPropertyRegistry registry) {
         registry.add("spring.cache.type", () -> "redis");
@@ -49,6 +48,7 @@ class SpringBootPracticeApplicationTests {
         GenericContainer.ExecResult execResult1 = redisContainer.execInContainer("redis-cli", "get", "student:cassie");
         GenericContainer.ExecResult execResult2 = redisContainer.execInContainer("redis-cli", "get", "student:fred");
         GenericContainer.ExecResult execResult3 = redisContainer.execInContainer("redis-cli", "get", "student:jack");
+
         Student actual1 = mapper.readValue(execResult1.getStdout(), Student.class);
         Student actual2 = mapper.readValue(execResult2.getStdout(), Student.class);
         Student actual3 = mapper.readValue(execResult3.getStdout(), Student.class);
@@ -59,5 +59,4 @@ class SpringBootPracticeApplicationTests {
         assertThat(actual2).isEqualTo(Student.of("fred", 14, Student.Grade.C));
         assertThat(actual3).isEqualTo(Student.of("jack", 15, Student.Grade.B));
     }
-
 }
